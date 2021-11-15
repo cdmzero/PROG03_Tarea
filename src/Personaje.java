@@ -17,6 +17,8 @@ public class Personaje {
     altura         = 0;
     inteligencia   = 0;
     fuerza         = 0;
+    
+    numeroPersonajes++;
     }
      
      
@@ -29,16 +31,25 @@ public class Personaje {
     altura         = c;
     inteligencia   = d;
     fuerza         = e;
+    
+     numeroPersonajes++;
     }
     
     //Constantes de nuestro personaje
 
     final int MAX_FUERZA=100;
     final int MAX_INTELIGENCIA=100;
+    
+    void consultaMaxFuerza() {
+   
+        System.out.println("La fuerza maxima es:"+MAX_FUERZA);
+    
+    }
 
     //Variable estatica que se ira incrementando con cada nuevo personaje
     
     static  int numeroPersonajes;
+    
     
     //Atributos de la clase
     
@@ -92,25 +103,35 @@ public class Personaje {
     void cambiaFuerza(int fuerza){
         this.fuerza=fuerza;
     }
-    
+/*
+   
     public String toString(String a, int b, int c, int d, int e){
-    
-        String bb = String.valueOf(b);
-        String cc = String.valueOf(c);
-        String dd = String.valueOf(d);
-        String ee = String.valueOf(e);
-       
-        
-        String var ="Nombre:"+ a +"; Edad: "+ bb +"; Altura: "+ cc +" cm; Inteligencia: "+ dd +"; Fuerza:" + ee;
+         
+        String var ="Nombre:"+ a +"; Edad: "+ b +"; Altura: "+ c +" cm; Inteligencia: "+ d +"; Fuerza:" + e;
         
         return var;
     }
    
+ */
+    
+       public String toString(Personaje ob){
+           
+        
+         
+        String var ="Nombre:"+ nombre +"; Edad: "+ edad +"; Altura: "+ altura +" cm; Inteligencia: "+ inteligencia +"; Fuerza: " + fuerza +"\n";
+        
+        return var;
+    }
     
    
     public int sumarFuerza(Personaje p){
       
+        int fuerzaTotal = this.fuerza + p.fuerza;
         
+        System.out.println(p.fuerza+"\n");
+        
+        
+        /*
         Personaje p1 = new Personaje();
          
          int fuerzaActual = this.fuerza;
@@ -121,6 +142,8 @@ public class Personaje {
        int fuerzaTotal = fuerzaClase + fuerzaActual;
        
       //System.out.println(fuerzaTotal);
+        
+        */
      
         return fuerzaTotal;
     }
@@ -143,13 +166,36 @@ public class Personaje {
        
        // Con parametros
        
-          Personaje person    = new Personaje ("Frodo",33,126,98,38);
+          Personaje person1    = new Personaje ("Frodo",33,126,98,38);
+          Personaje person2    = new Personaje ("Aragorn",45,185,88,92);
+          Personaje person3    = new Personaje ("Legolas",2931,178,93,84);
+          Personaje inventado  = new Personaje ("Inventado",26,189,92,192);
+          
+          
+          
+            /*
+       Suma de enteros de dos objetos
+       */
        
-          person.sumarFuerza(person);
+        int fuerzaPerson1       = person1.sumarFuerza(person1);
+        int fuerzaPerson2       = person2.sumarFuerza(person2);
+        int fuerzaTotal         = fuerzaPerson1 + fuerzaPerson2;
+        
+        System.out.println("La suma de Fuerza de "+person1.nombre+" y "+person2.nombre +" es: "+ fuerzaTotal+"\n"  );
+          
+       
+          
+       
+      //    person.sumarFuerza(person);
       
-       //String toString = person.toString("Frodo",33,126,98,38);
+      // String toString = person.toString(person);
        
-       //System.out.println(toString);
+       String toString1 = person1.toString(person1);
+       String toString2 = person2.toString(person2);
+       String toString3 = person3.toString(person3);
+       String toStringInventado = inventado.toString(inventado);
+       
+       System.out.println(toString1+toString2+toString3+toStringInventado);
         
        /*  
         Scanner sc          = new Scanner( System.in );
@@ -184,8 +230,49 @@ public class Personaje {
        
         // Invocacion de los metodos para cambiar los atributos mediante parametros
 
+         person1.cambiaNombre("Pepito");
+         person1.cambiaEdad(12);
+         person1.cambiaAltura(162);
+         person1.cambiaInteligencia(33);
+         person1.cambiaFuerza(44);
+         
+         person2.cambiaNombre("Juan");
+         person2.cambiaEdad(32);
+         person2.cambiaAltura(122);
+         person2.cambiaInteligencia(31);
+         person2.cambiaFuerza(94);
+         
+         person3.cambiaNombre("Maria");
+         person3.cambiaEdad(21);
+         person3.cambiaAltura(152);
+         person3.cambiaInteligencia(3);
+         person3.cambiaFuerza(41);
+        
+         inventado.cambiaNombre("Inventado Inven");
+         inventado.cambiaEdad(27);
+         inventado.cambiaAltura(153);
+         inventado.cambiaInteligencia(323);
+         inventado.cambiaFuerza(234);
+         
+         
+         String vartoString1             = person1.toString(person1);
+         String vartoString2             = person2.toString(person2);
+         String vartoString3             = person3.toString(person3);
+         String vartoStringInventado     = inventado.toString(inventado);
+         
+       System.out.println(vartoString1+vartoString2+vartoString3+vartoStringInventado);
 
 
+      System.out.println("Total de personajes creados: "+numeroPersonajes);
+      
+      
+      person1.consultaMaxFuerza();
+      
+    
+         
+  
+       
+       
         //Invocacion de los metodos para consultar los atributos
         /* 
         String nNombre      = person.consultaNombre();
